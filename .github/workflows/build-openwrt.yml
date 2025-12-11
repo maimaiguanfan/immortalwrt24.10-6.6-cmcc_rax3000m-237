@@ -25,6 +25,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
+  DIY_P1_5_SH: diy-part1.5.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -70,6 +71,12 @@ jobs:
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Load more custom feeds
+      run: |
+        chmod +x $DIY_P1_5_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_5_SH
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
