@@ -107,15 +107,15 @@ jobs:
         cat defconfig/mt7981-ax3000.config >.config
         if [ "${{ github.event.inputs.enable_package_conf }}" == "true" ] || [ -z "${{ github.event.inputs.enable_package_conf }}" ]; then
           echo "Adding packages from package.conf..."
-          bash ../diy_add_package.sh package.conf
+          bash $GITHUB_WORKSPACE/diy_add_package.sh package.conf
         fi
         if [ "${{ github.event.inputs.enable_scutpkg_conf }}" == "true" ]; then
           echo "Adding packages from scutpkg.conf..."
-          bash ../diy_add_package.sh scutpkg.conf
+          bash $GITHUB_WORKSPACE/diy_add_package.sh scutpkg.conf
         fi
         if [ "${{ github.event.inputs.enable_istorepkg_conf }}" == "true" ]; then
           echo "Adding packages from istorepkg.conf..."
-          bash ../diy_add_package.sh istorepkg.conf
+          bash $GITHUB_WORKSPACE/diy_add_package.sh istorepkg.conf
         fi
 
     - name: SSH connection to Actions
